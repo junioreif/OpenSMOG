@@ -5,22 +5,13 @@ R"""
 The :class:`~.OpenSMOG_Reporter` class stores the potential energy information for each force applied in the system.
 """
 
-# with OpenMM 7.7.0, the import calls have changed. So, try both, if needed
 try:
-    try:
-        # >=7.7.0
-        from openmm.app import *
-        from openmm import *
-        import openmm.unit as unit
-        
-    except:
-        # earlier
-        from simtk.openmm.app import *
-        from simtk.openmm import *
-        import simtk.unit as unit
+    from openmm.app import *
+    from openmm import *
+    import openmm.unit as unit
 except:
-    print('Failed to load OpenMM. Check your configuration.')
-    sys.exit(1)
+    SBM.opensmog_quit('Failed to load OpenMM. Note: OpenSMOG requires OpenMM version 8.1.0, or newer. Check your configuration.')
+
 
 import time
 from sys import stdout
